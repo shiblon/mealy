@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"entrogo.com/mealy"
+	"github.com/shiblon/mealy"
 )
 
 var (

@@ -1,4 +1,4 @@
-package mealy // import "entrogo.com/mealy"
+package mealy
 
 import (
 	"crypto/sha1"

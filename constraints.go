@@ -1,4 +1,4 @@
-package mealy // import "entrogo.com/mealy"
+package mealy
 
 // Implement this to specify constraints for the Mealy machine output.
 //

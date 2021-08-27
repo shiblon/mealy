@@ -3,7 +3,7 @@ Implements a Mealy Machine as described in the paper at
   http://www.n3labs.com/pdf/lexicon-squeeze.pdf
 The machine is defined for byte values, and serializes with that assumption.
 */
-package mealy // import "entrogo.com/mealy"
+package mealy
 
 import (
 	"bytes"
@@ -20,7 +20,7 @@ func FromChannel(values <-chan []byte) Recognizer {
 
 	states := make(map[string]int)
 	terminals := []bool{false}
-	larvae := []state{state{}}
+	larvae := []state{{}}
 
 	prefixLen := 0
 	prevValue := []byte{}
@@ -134,7 +134,7 @@ func (self Recognizer) AllTriggers() []byte {
 		}
 	}
 	triggers := make([]int, 0, len(triggerMap))
-	for k, _ := range triggerMap {
+	for k := range triggerMap {
 		triggers = append(triggers, k)
 	}
 	sort.Ints(triggers)
@@ -252,7 +252,7 @@ func (self *Recognizer) ConstrainedSequences(con Constraints) <-chan []byte {
 
 	go func() {
 		defer close(out)
-		path := []pathNode{pathNode{self.Start(), 0}}
+		path := []pathNode{{self.Start(), 0}}
 		advanceLastUntilAllowed(path) // Needed for node initialization
 
 		for path = popExhausted(path); len(path) > 0; path = popExhausted(path) {
